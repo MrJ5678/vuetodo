@@ -64,11 +64,7 @@ const config = {
         }),
         // 请确保引入这个插件来施展魔法
         new VueLoaderPlugin(),
-        new HTMLPlugin(),
-        config.plugins.push(
-            new webpack.HotModuleReplacementPlugin(),
-            new webpack.NoEmitOnErrorsPlugin()
-        )
+        new HTMLPlugin()
     ]
 }
 
@@ -81,7 +77,11 @@ if(isDev) {
             error: true
         },
         hot: true
-    }
+    },
+    config.plugins.push(
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin()
+    )
 }
 
 module.exports = config
