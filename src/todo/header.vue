@@ -13,7 +13,7 @@ export default {};
     text-align center
     h1 {
         margin 20px
-        font-size 100px
+        font-size 80px
         font-weight 400
         color #c93942
     }
