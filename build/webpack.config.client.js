@@ -74,8 +74,8 @@ if(isDev) {
         hot: true
     },
     config.plugins.push(
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.HotModuleReplacementPlugin()
+        // new webpack.NoEmitOnErrorsPlugin()
     )
 }else {
     config.entry = {
