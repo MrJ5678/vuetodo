@@ -7,7 +7,7 @@ const config = {
     entry: path.join(__dirname, '../src/index.js'),
     output: {
         filename: 'bundle.[hash:8].js',
-        path: path.join(__dirname, 'dist')
+        path: path.join(__dirname, '../dist')
     },
     module: {
         rules: [
@@ -22,7 +22,11 @@ const config = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/
+                exclude: __dirname + 'node_modules',
+                include: __dirname + 'src',
+                options: {
+                    presets: ['env']
+                }
             },
             {
                 test: /\.(gif|jpg|jpeg|svg|png)$/,
@@ -31,7 +35,7 @@ const config = {
                         loader: 'url-loader',
                         options: {
                             limit: 1024,
-                            name: '[name]-aaa.[ext]'
+                            name: 'resource/[path][name]-[hash:8].[ext]'
                         }
                     }
                 ]
@@ -39,11 +43,6 @@ const config = {
         ]
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: isDev ? '"development"' : '"production"'
-            }
-        }),
         // 请确保引入这个插件来施展魔法
         new VueLoaderPlugin()
     ]
