@@ -1,7 +1,10 @@
 module.exports = (isDev) => {
     return {
-        preserverWhitespace: true,
-        extractCss: !isDev,
-        cssModules: {}
+        // preserveWhitespace: true,
+        // extractCss: !isDev,
+        cssModules: {
+            localIdentName: '[path][name]---[local]---[hash:base64:5]',
+            camelCase: true
+        }
     }
 }

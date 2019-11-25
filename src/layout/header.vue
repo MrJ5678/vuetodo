@@ -1,5 +1,5 @@
 <template>
-  <div class="main-header">
+  <div :class="$style.mainHeader">
     <h1>HQtodo</h1>
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default {};
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus" module>
 .main-header {
     text-align center
     h1 {

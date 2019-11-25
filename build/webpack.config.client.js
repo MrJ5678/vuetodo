@@ -33,17 +33,44 @@ if(isDev) {
             rules: [
                 {
                     test: /\.styl/,
-                    use: [
-                        'vue-style-loader', 
-                        'css-loader',
+                    oneOf: [
                         {
-                            loader: 'postcss-loader',
-                            options: {
-                                sourceMap: true
-                            }
+                            resourceQuery: /module/,
+                            use: [
+                                'vue-style-loader', 
+                                {
+                                    loader: 'css-loader',
+                                    options: {
+                                        modules: {
+                                            localIdentName: '[path][name]__[local]--[hash:base64:5]'
+                                        }
+                                    }
+                                },
+                                {
+                                    loader: 'postcss-loader',
+                                    options: {
+                                        sourceMap: true
+                                    }
+                                },
+                                'stylus-loader'
+                            ]
                         },
-                        'stylus-loader'
+                        {
+                            use: [
+                                'vue-style-loader', 
+                                'css-loader',
+                                {
+                                    loader: 'postcss-loader',
+                                    options: {
+                                        sourceMap: true
+                                    }
+                                },
+                                'stylus-loader'
+                            ]
+                        }
+                        
                     ]
+                    
                 }
             ]
         },
